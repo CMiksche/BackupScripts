@@ -51,6 +51,11 @@ if [ $wochentag == "Sa" ] # Wenn Samstag ist
                 tar -zcf /media/FREIGABE/backup/server/HOSTNAME/$jahr/$monat/$tag/data.tgz /var/www
 fi
 
+if [ $wochentag == "Sat" ] # Wenn Samstag ist
+        then
+                tar -zcf /media/FREIGABE/backup/server/HOSTNAME/$jahr/$monat/$tag/data.tgz /var/www
+fi
+
 # Backup von Datenbank anlegen
 
 mysqldump --all-databases -u USERNAME --password=PASSWORD --events | gzip >/media/FREIGABE/backup/server/HOSTNAME/$jahr/$monat/$tag/db.sql.gz
