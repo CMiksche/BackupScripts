@@ -27,13 +27,11 @@ wochentag=`date "+%a"`;
 # Install NcFTP
 sudo apt-get install ncftp
 # Array of Server Names
-ServerNameArray=("SERVER1" "SERVER2")
-# Array of Server Data, 1. SERVER1, 2. SERVER2
-ServerDataArray=("-u USERNAME1 -p PASSWORD1 IP1" "-u USERNAME2 -p PASSWORD2 IP2")
+ServerNameArray=("SERVERDOMAIN")
+# Array of Server Data
+ServerDataArray=("-u USERNAME -p PASSWORD SERVER")
 # Local Dir
-localdir="/media/FREIGABE/backup/server"
-# Server Dir
-serverdir="BACKUPPFAD"
+localdir="LOCALDIR"
 
 # Counter
 number=0
@@ -41,7 +39,12 @@ number=0
 for name in "${ServerNameArray[@]}"
         do
 
-                ncftpget -R ${ServerDataArray[number]} "$localdir/$name/$jahr/$monat" "$serverdir/$name/$jahr/$monat/$tag"
+                ncftpget -R ${ServerDataArray[number]} "$localdir/$name/$jahr/$monat/$tag/ftp" "/"
 
                 ((number++))
 done
+
+# Packen
+tar -zcf $localdir/$name/$jahr/$monat/$tag/data.tgz $localdir/$name/$jahr/$monat/$tag/ftp
+# Dateien entfernen
+rm -rf $localdir/$name/$jahr/$monat/$tag/ftp
