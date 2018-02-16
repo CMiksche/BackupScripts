@@ -1,9 +1,9 @@
 # BackupScripts
 Different Backup Scripts for *nix
 
-- Create: Creates MySQL Backup and a .tar.gz file of /var/www
-- Downlad: Download the MySQL Backup and .tar.gz file of /var/www
-- Sharedhost-download: Download files via FTP, create a .tar.gz file and delete the FTP Files
+- create.sh: Creates MySQL Backup and a .tar.gz file of /var/www
+- download.sh: Download the MySQL Backup and .tar.gz file of /var/www
+- sharedhost-download.sh: Download files via FTP, create a .tar.gz file and delete the FTP Files
 
 ## General Information
 
